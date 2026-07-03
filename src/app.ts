@@ -13,7 +13,7 @@ app.use(pinoHttp());
 app.use(express.json({ limit: "10kb" }));
 app.use(jsonErrorMiddleware);
 
-app.use("/v1/wallets", walletRoutes);
+// app.use("/v1/wallets", walletRoutes);
 
 app.get("/health", (_req, res) => res.json({ status: "ok" }));
 
