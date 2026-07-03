@@ -4,7 +4,6 @@ import { connectWithRetry, sequelize } from "./database/sequelize";
 
 async function main() {
   await connectWithRetry();
-  await sequelize.sync();
 
   const server = app.listen(env.port, () => {
     console.log(`Listening on port ${env.port}`);
