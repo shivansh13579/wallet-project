@@ -15,7 +15,7 @@ app.use(jsonErrorMiddleware);
 
 // app.use("/v1/wallets", walletRoutes);
 
-app.get("/health", (_req, res) => res.json({ status: "ok" }));
+app.get("/health", (_req, res) => res.json({ status: "health is good" }));
 
 app.use((req, res) => res.status(404).json({ error: "not_found" }));
 app.use(errorMiddleware);

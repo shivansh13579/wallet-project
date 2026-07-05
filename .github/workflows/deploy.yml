@@ -1,0 +1,32 @@
+name: Deploy to GCP VM
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+
+          script: |
+            cd ~/wallet-project
+
+            git pull origin master
+
+            docker compose down
+
+            docker compose build
+
+            docker compose up -d
+
+            docker image prune -f
